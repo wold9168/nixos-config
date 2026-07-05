@@ -105,9 +105,6 @@
     ];
   };
 
-  programs.firefox.enable = true;
-  programs.partition-manager.enable = true;
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -119,10 +116,16 @@
     git
     inputs.helix.packages."${pkgs.stdenv.hostPlatform.system}".helix
 
+    # browser
+    firefox
+
     # shell
     zsh
 
-    # network
+    # administration tool
+    ## disk
+    partition-manager
+    ## network
     mtr
     iperf3
     dnsutils
@@ -133,8 +136,7 @@
     socat
     nmap
     ipcalc
-
-    # system tools
+    ## system tools
     sysstat
     lm_sensors
     ethtool
