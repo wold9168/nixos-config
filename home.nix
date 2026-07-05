@@ -1,54 +1,54 @@
-{ config, pkgs, ...}:
+{ config, pkgs, ... }:
 {
-	home.username = "wold9168";
-	home.homeDirectory = "/home/wold9168";
-	programs.git = {
-		enable = true;
-		userName = "wold9168";
-		userEmail = "moewold@outlook.com";
-	};
-	
-	# User-level Applications
-	home.packages = with pkgs;[
-		# compress
-		zip
-		xz
-		unzip
-		p7zip
-		gnutar
-		zstd
+  home.username = "wold9168";
+  home.homeDirectory = "/home/wold9168";
+  programs.git = {
+    enable = true;
+    userName = "wold9168";
+    userEmail = "moewold@outlook.com";
+  };
 
-		# performance
-		btop
-		htop
-		iotop
-		iftop
+  # User-level Applications
+  home.packages = with pkgs; [
+    # compress
+    zip
+    xz
+    unzip
+    p7zip
+    gnutar
+    zstd
 
-		# utils
-		ripgrep
-		jq
-		fd
-		gawk
-		gnupg
-		jekyll
-		glow
+    # performance
+    btop
+    htop
+    iotop
+    iftop
 
-		# nix-related
-		nix-output-monitor
+    # utils
+    ripgrep
+    jq
+    fd
+    gawk
+    gnupg
+    jekyll
+    glow
 
-		# misc
-		which
-		file		
-	];
-	programs.starship = {
-		enable = true;
-		settings = {
-			add_newline = false;
-			aws.disabled = true;
-			gcloud.disabled = true;
-			line_break.disabled = true;
-		};
-	};
-	
-	home.stateVersion = "26.05";
+    # nix-related
+    nix-output-monitor
+
+    # misc
+    which
+    file
+  ];
+  programs.starship = {
+    enable = true;
+    settings = {
+      add_newline = false;
+      aws.disabled = true;
+      gcloud.disabled = true;
+      line_break.disabled = true;
+    };
+  };
+
+  home.stateVersion = "26.05";
 }
