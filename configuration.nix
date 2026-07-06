@@ -124,7 +124,7 @@
 
     # administration tool
     ## disk
-    partition-manager
+    kdePackages.partitionmanager
     ## network
     mtr
     iperf3
