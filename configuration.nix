@@ -96,7 +96,7 @@
       "networkmanager"
       "wheel"
     ];
-    openssh.authorizedKey.keys = [
+    openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPpRSgZTTzpWvrLMPceSkrkDe2LtHumAWd/33p+ExU9G moewold@outlook.com"
     ];
     packages = with pkgs; [
