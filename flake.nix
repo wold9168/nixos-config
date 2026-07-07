@@ -1,6 +1,6 @@
 {
   description = "Flake of Trusted Open Utility & Gear Hub Node C";
-  
+
   # the nixConfig here only affects the flake itself, not the system configuration!
   # for more information, see:
   #     https://nixos-and-flakes.thiscute.world/nix-store/add-binary-cache-servers
@@ -21,9 +21,24 @@
   };
 
   inputs = {
+    # Official NixOS source
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-2605.url = "github:nixos/nixpkgs/nixos-26.05";
+
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixvim = {
+      url = "github:nix-community/nixvim/nixos-26.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+        catppuccin = {
+      url = "github:catppuccin/nix/v26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
