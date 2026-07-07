@@ -56,7 +56,7 @@
       nixosConfigurations.toughc = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          ./system
+          ./hosts/toughc
 
           home-manager.nixosModules.home-manager
           {
