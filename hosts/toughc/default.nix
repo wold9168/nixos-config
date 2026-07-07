@@ -8,50 +8,18 @@
   inputs,
   ...
 }:
-
 {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../system
   ];
-  # settings
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "toughc"; # Define your hostname.
-  networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-
-  # Set your time zone.
-  time.timeZone = "Asia/Shanghai";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "zh_CN.UTF-8";
-    LC_IDENTIFICATION = "zh_CN.UTF-8";
-    LC_MEASUREMENT = "zh_CN.UTF-8";
-    LC_MONETARY = "zh_CN.UTF-8";
-    LC_NAME = "zh_CN.UTF-8";
-    LC_NUMERIC = "zh_CN.UTF-8";
-    LC_PAPER = "zh_CN.UTF-8";
-    LC_TELEPHONE = "zh_CN.UTF-8";
-    LC_TIME = "zh_CN.UTF-8";
-  };
+  networking.hostName = "toughc";
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
@@ -89,31 +57,16 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users."wold9168" = {
-    isNormalUser = true;
-    description = "wold9168";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPpRSgZTTzpWvrLMPceSkrkDe2LtHumAWd/33p+ExU9G moewold@outlook.com"
-    ];
     packages = with pkgs; [
       kdePackages.kate
       thunderbird
     ];
   };
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   # Machine-specific packages (shared ones come from system/)
   environment.systemPackages = with pkgs; [
     fish
-    vim
-    git
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -128,12 +81,6 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
