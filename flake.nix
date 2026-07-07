@@ -21,13 +21,13 @@
       nixosConfigurations.toughc = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          ./configuration.nix
+          ./system
 
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.wold9168 = import ./home.nix;
+            home-manager.users.wold9168 = import ./home;
             # home-manager.extraSpecialArgs = inputs;
           }
         ];
