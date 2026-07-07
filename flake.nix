@@ -67,5 +67,18 @@
           }
         ];
       };
+      nixosConfigurations.toughqemu = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/toughqemu
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.wold9168 = import ./home;
+          }
+        ];
+      };
     };
 }
