@@ -52,32 +52,27 @@
       home-manager,
       ...
     }@inputs:
+    let
+      home-manager-instance = home-manager.nixosModules.home-manager {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.users.wold9168 = import ./home;
+        # home-manager.extraSpecialArgs = inputs;
+      };
+    in
     {
       nixosConfigurations.toughc = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/toughc
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.wold9168 = import ./home;
-            # home-manager.extraSpecialArgs = inputs;
-          }
+          home-manager-instance
         ];
       };
       nixosConfigurations.toughqemu = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/toughqemu
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.wold9168 = import ./home;
-          }
+          home-manager-instance
         ];
       };
     };
