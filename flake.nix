@@ -27,7 +27,12 @@
     helix.url = "github:helix-editor/helix/master";
   };
   outputs =
-    { self, nixpkgs, home-manager, ... }@inputs:
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }@inputs:
     let
       inherit (inputs.nixpkgs) lib;
 
@@ -39,7 +44,8 @@
       };
 
       # Per-host NixOS configurations
-      nixosSystems = {
+      nixosSystems = rec {
+        default = toughc;
         toughc = lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
