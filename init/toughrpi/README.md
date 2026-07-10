@@ -1,0 +1,1 @@
+This dir is designed for building a bootstrap NixOS image for aarch64-linux (toughrpi, Raspberry Pi 4B 4GB).
