@@ -100,9 +100,31 @@
             };
         };
       };
+      devReplEnv = {
+        "${developHostSystem}" = {
+          devRepl =
+            let
+              pkgs = import nixpkgs { system = developHostSystem; };
+              packages = with pkgs; [
+                nix
+              ];
+            in
+            pkgs.runCommand "dev-repl"
+              {
+                buildInputs = packages;
+                nativeBuildInputs = [ pkgs.makeWrapper ];
+              }
+              ''
+                mkdir -p $out/bin
+                makeWrapper ${pkgs.nix}/bin/nix $out/bin/dev-repl \
+                  --add-flags repl
+              '';
+        };
+      };
     in
     {
       nixosConfigurations = nixosConfigurationsInstance;
       devShells = devShellsInstance;
+      packages = devReplEnv;
     };
 }
