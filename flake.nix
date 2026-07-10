@@ -1,5 +1,5 @@
 {
-  description = "Flake of Trusted Open Utility & Gear Hub Node C";
+  description = "NixOS Configuration by wold9168, for Trusted Open Utility & Gear Hub (tough)";
 
   inputs = {
     # Official NixOS source
