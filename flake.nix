@@ -27,34 +27,36 @@
     helix.url = "github:helix-editor/helix/master";
   };
   outputs =
-    {
-      self,
-      nixpkgs,
-      home-manager,
-      ...
-    }@inputs:
+    { self, nixpkgs, home-manager, ... }@inputs:
     let
-      home-manager-instance = home-manager.nixosModules.home-manager {
+      inherit (inputs.nixpkgs) lib;
+
+      home-manager-module = {
+        imports = [ home-manager.nixosModules.home-manager ];
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.users.wold9168 = import ./home;
-        # home-manager.extraSpecialArgs = inputs;
+      };
+
+      # Per-host NixOS configurations
+      nixosSystems = {
+        toughc = lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/toughc
+            home-manager-module
+          ];
+        };
+        toughqemu = lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/toughqemu
+            home-manager-module
+          ];
+        };
       };
     in
     {
-      nixosConfigurations.toughc = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/toughc
-          home-manager-instance
-        ];
-      };
-      nixosConfigurations.toughqemu = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/toughqemu
-          home-manager-instance
-        ];
-      };
+      nixosConfigurations = nixosSystems;
     };
 }
