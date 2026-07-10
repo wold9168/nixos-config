@@ -28,9 +28,6 @@
     git
     inputs.helix.packages."${pkgs.stdenv.hostPlatform.system}".helix
 
-    # browser
-    firefox
-
     # shell
     zsh
 

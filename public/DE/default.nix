@@ -18,4 +18,6 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
+
+  programs.firefox.enable = true;
 }
