@@ -4,8 +4,8 @@
   home.homeDirectory = "/home/wold9168";
   programs.git = {
     enable = true;
-    userName = "wold9168";
-    userEmail = "moewold@outlook.com";
+    settings.user.name = "wold9168";
+    settings.user.email = "moewold@outlook.com";
   };
 
   # User-level Applications
