@@ -22,7 +22,7 @@ history:
     nix profile history --profile /nix/var/nix/profiles/system
 
 repl:
-    nix run .#devRepl
+    nix run .\#devRepl
 
 clean:
     # remove all generations older than 7 days

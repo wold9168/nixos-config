@@ -100,31 +100,17 @@
             };
         };
       };
-      devReplEnv = {
-        "${developHostSystem}" = {
-          devRepl =
-            let
-              pkgs = import nixpkgs { system = developHostSystem; };
-              packages = with pkgs; [
-                nix
-              ];
-            in
-            pkgs.runCommand "dev-repl"
-              {
-                buildInputs = packages;
-                nativeBuildInputs = [ pkgs.makeWrapper ];
-              }
-              ''
-                mkdir -p $out/bin
-                makeWrapper ${pkgs.nix}/bin/nix $out/bin/dev-repl \
-                  --add-flags repl
-              '';
-        };
-      };
+      devReplEnv =
+        let
+          pkgs = import nixpkgs { system = developHostSystem; };
+        in
+        pkgs.writeShellScriptBin "dev-repl" ''
+          exec ${pkgs.nix}/bin/nix repl
+        '';
     in
     {
       nixosConfigurations = nixosConfigurationsInstance;
       devShells = devShellsInstance;
-      packages = devReplEnv;
+      devRepl = devReplEnv;
     };
 }
