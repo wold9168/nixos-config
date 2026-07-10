@@ -60,6 +60,13 @@
             home-manager-module
           ];
         };
+        toughrpi = lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/toughrpi
+            home-manager-module
+          ];
+        };
       };
     in
     {
