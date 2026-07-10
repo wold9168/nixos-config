@@ -12,7 +12,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../../system
+    ../../public/system
   ];
 
   # Bootloader.
@@ -64,7 +64,7 @@
     ];
   };
 
-  # Machine-specific packages (shared ones come from system/)
+  # Machine-specific packages (shared ones come from public/system/)
   environment.systemPackages = with pkgs; [
     fish
   ];

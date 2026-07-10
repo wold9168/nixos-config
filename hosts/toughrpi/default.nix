@@ -13,7 +13,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../../system
+    ../../public/system
   ];
 
   # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
