@@ -22,6 +22,7 @@ history:
     nix profile history --profile /nix/var/nix/profiles/system
 
 repl:
+    @echo -e '\e[34mRun ":lf ." to load flake of this repo.\e[0m'
     nix run .\#devRepl
 
 clean:
