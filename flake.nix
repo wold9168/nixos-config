@@ -70,47 +70,13 @@
           ];
         };
       };
-      devShellsInstance = {
-        "${developHostSystem}" = rec {
-          default = toughc;
-          toughc =
-            let
-              pkgs = import nixpkgs { system = developHostSystem; };
-              packages = with pkgs; [
-                nix
-                # fix https://discourse.nixos.org/t/non-interactive-bash-errors-from-flake-nix-mkshell/33310
-                bashInteractive
-                # fix `cc` replaced by clang, which causes nvim-treesitter compilation error
-                gcc
-                # Nix-related
-                nixfmt
-                deadnix
-                statix
-                # spell checker
-                typos
-                # code formatter
-                prettier
-              ];
-            in
-            pkgs.mkShell {
-              inherit packages;
-              shellHook = ''
-                echo devShell launched.
-              '';
-            };
-        };
-      };
-      devReplEnv =
-        let
-          pkgs = import nixpkgs { system = developHostSystem; };
-        in
-        pkgs.writeShellScriptBin "dev-repl" ''
-          exec ${pkgs.nix}/bin/nix repl flake:nixpkgs
-        '';
+      devShellsInstance = import ./devshell.nix { inherit developHostSystem nixpkgs; };
+      devReplEnv = import ./devrepl.nix { inherit developHostSystem nixpkgs; };
+
     in
     {
       nixosConfigurations = nixosConfigurationsInstance;
       devShells = devShellsInstance;
-      devRepl = devReplEnv;
+      packages."${developHostSystem}"."devRepl" = devReplEnv;
     };
 }
