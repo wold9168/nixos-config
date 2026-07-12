@@ -1,4 +1,5 @@
-{ pkgs, inputs, ... }: {
+{ pkgs, inputs, ... }@inargs:
+{
   time.timeZone = "Asia/Shanghai";
 
   nixpkgs.config.allowUnfree = true;
@@ -22,46 +23,8 @@
     "nix-command"
     "flakes"
   ];
-  environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    neovim
-    git
-    inputs.helix.packages."${pkgs.stdenv.hostPlatform.system}".helix
+  
+  environment.systemPackages = import ./system-level-pkgs.nix { inherit inargs; };
 
-    # shell
-    zsh
-
-    # administration tool
-    ## disk
-    kdePackages.partitionmanager
-    ## network
-    mtr
-    iperf3
-    dnsutils
-    ldns
-    curl
-    wget
-    aria2
-    socat
-    nmap
-    ipcalc
-    ## system tools
-    sysstat
-    lm_sensors
-    ethtool
-    pciutils # lspci
-    usbutils # lsusb
-  ];
-
-  users.users."wold9168" = {
-    isNormalUser = true;
-    description = "wold9168";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPpRSgZTTzpWvrLMPceSkrkDe2LtHumAWd/33p+ExU9G moewold@outlook.com"
-    ];
-  };
+  users = import ./users.nix { inherit inargs; };
 }
