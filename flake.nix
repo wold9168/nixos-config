@@ -38,7 +38,7 @@
       inherit (inputs.nixpkgs) lib;
       mylib = import ../lib { inherit lib; };
       myvar = import ../var { inherit lib; };
-      specialArgsInstance = { inherit inputs; };
+      specialArgsInstance = { inherit inputs mylib myvar; };
 
       developHostSystem = "x86_64-linux";
 
@@ -46,7 +46,7 @@
         imports = [ home-manager.nixosModules.home-manager ];
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = { inherit inputs mylib myvar; };
+        home-manager.extraSpecialArgs = specialArgsInstance;
         home-manager.users.wold9168 = import ./home/wold9168;
       };
 
