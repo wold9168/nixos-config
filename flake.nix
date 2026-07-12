@@ -43,7 +43,7 @@
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = { inherit inargs; };
-        home-manager.users.wold9168 = import ./home;
+        home-manager.users.wold9168 = import ./home/wold9168;
       };
 
       # Per-host NixOS configurations
