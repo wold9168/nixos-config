@@ -5,9 +5,6 @@
     git
     inputs.helix.packages."${pkgs.stdenv.hostPlatform.system}".helix
 
-    # shell
-    zsh
-
     # administration tool
     ## disk
     kdePackages.partitionmanager
