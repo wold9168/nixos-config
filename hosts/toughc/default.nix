@@ -29,11 +29,6 @@
     ];
   };
 
-  # Machine-specific packages (shared ones come from public/system/)
-  environment.systemPackages = with pkgs; [
-    fish
-  ];
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
