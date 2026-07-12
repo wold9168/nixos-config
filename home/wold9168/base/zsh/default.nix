@@ -5,13 +5,19 @@
   ...
 }:
 {
-  programs.zsh = {
+  programs.zsh={
     enable = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
   };
+
   users.users."${myvar.username}" = {
     shell = lib.mkForce "/bin/zsh";
   };
-  environment.pathsToLink = [ "/share/zsh" ]; # Enable Completion of ZSH,
+
+  programs.oh-my-posh = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
 }

@@ -1,5 +1,6 @@
 { pkgs, myvar, ... }:
 {
+  imports = [ ./base ];
   home.username = myvar.username;
   home.homeDirectory = "/home/wold9168";
   programs.git = {
