@@ -32,9 +32,9 @@
       nixpkgs,
       home-manager,
       ...
-    }@inputs:
+    }@inargs:
     let
-      inherit (inputs.nixpkgs) lib;
+      inherit (inargs.nixpkgs) lib;
 
       developHostSystem = "x86_64-linux";
 
@@ -42,6 +42,7 @@
         imports = [ home-manager.nixosModules.home-manager ];
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
+        home-manager.extraSpecialArgs = { inherit inargs; };
         home-manager.users.wold9168 = import ./home;
       };
 
@@ -49,21 +50,21 @@
       nixosConfigurationsInstance = rec {
         default = toughc;
         toughc = lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inargs; };
           modules = [
             ./hosts/toughc
             home-manager-module
           ];
         };
         toughqemu = lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inargs; };
           modules = [
             ./hosts/toughqemu
             home-manager-module
           ];
         };
         toughrpi = lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inargs; };
           modules = [
             ./hosts/toughrpi
             home-manager-module
