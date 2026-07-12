@@ -1,13 +1,13 @@
-{ ... }@inargs: {
-  users."wold9168" = {
+{ myvar, ... }: {
+  users.users."${myvar.username}" = {
     isNormalUser = true;
-    description = "wold9168";
+    description = myvar.userfullname;
+    shell = "/bin/zsh"; # TODO: Set bash as fallback;
+    createHome = true;
     extraGroups = [
       "networkmanager"
       "wheel"
     ];
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPpRSgZTTzpWvrLMPceSkrkDe2LtHumAWd/33p+ExU9G moewold@outlook.com"
-    ];
+    openssh.authorizedKeys.keys = myvar.mainSshAuthorizedKeys;
   };
 }

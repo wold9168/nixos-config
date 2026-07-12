@@ -36,8 +36,8 @@
     # inputs includes object in flake's inputs.
     let
       inherit (inputs.nixpkgs) lib;
-      mylib = import ../lib { inherit lib; };
-      myvar = import ../var { inherit lib; };
+      mylib = import ./lib { inherit lib; };
+      myvar = import ./var { inherit lib; };
       specialArgsInstance = { inherit inputs mylib myvar; };
 
       developHostSystem = "x86_64-linux";

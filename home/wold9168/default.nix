@@ -1,6 +1,6 @@
-{ config, pkgs, ... }:
+{ pkgs, myvar, ... }:
 {
-  home.username = "wold9168";
+  home.username = myvar.username;
   home.homeDirectory = "/home/wold9168";
   programs.git = {
     enable = true;
