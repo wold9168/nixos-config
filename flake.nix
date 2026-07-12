@@ -32,9 +32,13 @@
       nixpkgs,
       home-manager,
       ...
-    }@inargs:
+    }@inputs:
+    # inputs includes object in flake's inputs.
     let
-      inherit (inargs.nixpkgs) lib;
+      inherit (inputs.nixpkgs) lib;
+      mylib = import ../lib { inherit lib; };
+      myvar = import ../var { inherit lib; };
+      specialArgsInstance = { inherit inputs; };
 
       developHostSystem = "x86_64-linux";
 
@@ -42,7 +46,7 @@
         imports = [ home-manager.nixosModules.home-manager ];
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = { inherit inargs; };
+        home-manager.extraSpecialArgs = { inherit inputs mylib myvar; };
         home-manager.users.wold9168 = import ./home/wold9168;
       };
 
@@ -50,21 +54,21 @@
       nixosConfigurationsInstance = rec {
         default = toughc;
         toughc = lib.nixosSystem {
-          specialArgs = { inherit inargs; };
+          specialArgs = specialArgsInstance;
           modules = [
             ./hosts/toughc
             home-manager-module
           ];
         };
         toughqemu = lib.nixosSystem {
-          specialArgs = { inherit inargs; };
+          specialArgs = specialArgsInstance;
           modules = [
             ./hosts/toughqemu
             home-manager-module
           ];
         };
         toughrpi = lib.nixosSystem {
-          specialArgs = { inherit inargs; };
+          specialArgs = specialArgsInstance;
           modules = [
             ./hosts/toughrpi
             home-manager-module
@@ -73,9 +77,9 @@
       };
       devShellsInstance = import ./devshell.nix { inherit developHostSystem nixpkgs; };
       devReplEnv = import ./devrepl.nix { inherit developHostSystem nixpkgs; };
-
     in
     {
+      inherit inputs;
       nixosConfigurations = nixosConfigurationsInstance;
       devShells = devShellsInstance;
       packages."${developHostSystem}"."devRepl" = devReplEnv;
