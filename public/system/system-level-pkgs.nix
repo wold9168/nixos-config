@@ -28,5 +28,35 @@
     ethtool
     pciutils # lspci
     usbutils # lsusb
+
+    # compress
+    zip
+    xz
+    unzip
+    p7zip
+    gnutar
+    zstd
+
+    # performance
+    btop
+    htop
+    iotop
+    iftop
+
+    # utils
+    ripgrep
+    jq
+    fd
+    gawk
+    gnupg
+    jekyll
+    glow
+
+    # nix-related
+    nix-output-monitor
+
+    # misc
+    which
+    file
   ];
 }
