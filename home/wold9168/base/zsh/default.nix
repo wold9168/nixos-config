@@ -5,7 +5,7 @@
   ...
 }:
 {
-  programs.zsh={
+  programs.zsh = {
     enable = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
@@ -19,7 +19,7 @@
     enable = true;
     enableZshIntegration = true;
   };
-  
+
   # TODO: Set the prompt as $
 
   # TODO: Try to set up oh-my-zsh and powerlevel10k
