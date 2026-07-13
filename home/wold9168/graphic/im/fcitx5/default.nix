@@ -18,14 +18,6 @@ in
   #   #   config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/home/linux/gui/base/fcitx5/mozc-config1.db";
   # };
 
-  nixpkgs.overlays = [
-    (final: prev: {
-      fcitx5-rime = prev.fcitx5-rime.override {
-        rimeDataPkgs = [ rime-data ];
-      };
-    })
-  ];
-
   i18n.inputMethod = {
     enable = true;
     type = "fcitx5";
@@ -35,7 +27,7 @@ in
       fcitx5-gtk # gtk im module
 
       # Chinese
-      fcitx5-rime # for flypy chinese input method
+      (fcitx5-rime.override { rimeDataPkgs = [ rime-data ]; }) # for flypy chinese input method
       # fcitx5-chinese-addons # we use rime instead
 
       # Japanese
