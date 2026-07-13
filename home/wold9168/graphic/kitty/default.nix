@@ -1,4 +1,5 @@
-{ inputs, pkgs, ... }: {
+{ inputs, config, ... }:
+{
   programs.kitty = {
     enable = true;
 
@@ -26,6 +27,12 @@
     shellIntegration.enableZshIntegration = true;
   };
 
-  home.file.".config/kitty/search.py".source = "${inputs.kitty-config}/search.py";
-  home.file.".config/kitty/scroll_mark.py".source = "${inputs.kitty-config}/scroll_mark.py";
+  home.file."${config.xdg.configHome}/kitty/search.py" = {
+    source = "${inputs.kitty-config}/search.py";
+    force = true;
+  };
+  home.file."${config.xdg.configHome}/kitty/scroll_mark.py" = {
+    source = "${inputs.kitty-config}/scroll_mark.py";
+    force = true;
+  };
 }
