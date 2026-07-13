@@ -43,7 +43,7 @@
     };
 
     rime-config = {
-      url = "github:wold9168/rime-ice/master";
+      url = "github:wold9168/rime-ice/main";
       flake = false;
     };
   };
