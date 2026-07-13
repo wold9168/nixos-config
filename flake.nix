@@ -99,7 +99,7 @@
           specialArgs = specialArgsInstance;
           modules = [
             ./hosts/toughrpi
-            home-manager-module
+            home-manager-module # need test
             inputs.catppuccin.nixosModules.catppuccin
           ];
         };
