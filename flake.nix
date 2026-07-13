@@ -35,10 +35,10 @@
     opencode-config = {
       url = "github:wold9168/opencode-config/master";
       flake = false;
-      submodules = true;
-      lfs = true;
     };
   };
+  inputs.self.submodules = true;
+  inputs.self.lfs = true;
   outputs =
     {
       self,
