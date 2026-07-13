@@ -204,6 +204,23 @@
         "type": "github"
       }
     },
+    "rime-config": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1767153492,
+        "narHash": "sha256-FWPh3RJMNhbhUysE8B2C0b+Wz2Bo/oSA49h1HzRBCAI=",
+        "owner": "wold9168",
+        "repo": "rime-ice",
+        "rev": "3a9a76e2c58181d3980a1cdeb6dda55a67605f2d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "wold9168",
+        "ref": "main",
+        "repo": "rime-ice",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "catppuccin": "catppuccin",
@@ -215,6 +232,7 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixvim": "nixvim",
         "opencode-config": "opencode-config",
+        "rime-config": "rime-config",
         "zed-config": "zed-config"
       }
     },
