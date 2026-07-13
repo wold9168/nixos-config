@@ -5,8 +5,6 @@
     inputs.helix.packages."${pkgs.stdenv.hostPlatform.system}".helix
 
     # administration tool
-    ## disk
-    kdePackages.partitionmanager
     ## network
     mtr
     iperf3
