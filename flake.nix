@@ -66,7 +66,12 @@
           useGlobalPkgs = true;
           useUserPackages = true;
           extraSpecialArgs = specialArgsInstance;
-          users.wold9168 = import ./home/wold9168;
+          users.wold9168 = {
+            imports = [
+              ./home/wold9168
+              inputs.catppuccin.nixosModules.catppuccin
+            ];
+          };
           backupFileExtension = "backup";
         };
       };
@@ -79,6 +84,7 @@
           modules = [
             ./hosts/toughc
             home-manager-module
+            inputs.catppuccin.nixosModules.catppuccin
           ];
         };
         toughqemu = lib.nixosSystem {
@@ -86,6 +92,7 @@
           modules = [
             ./hosts/toughqemu
             home-manager-module
+            inputs.catppuccin.nixosModules.catppuccin
           ];
         };
         toughrpi = lib.nixosSystem {
@@ -93,6 +100,7 @@
           modules = [
             ./hosts/toughrpi
             home-manager-module
+            inputs.catppuccin.nixosModules.catppuccin
           ];
         };
       };
