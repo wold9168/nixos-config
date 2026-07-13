@@ -4,7 +4,6 @@
     jq
     fd
     gawk
-    gnupg
     jekyll
     glow
   ];

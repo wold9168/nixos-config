@@ -22,11 +22,6 @@
 
   services.printing.enable = true;
 
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
-
   services.openssh.enable = true;
 
   system.stateVersion = "26.05"; # Did you read the comment?
