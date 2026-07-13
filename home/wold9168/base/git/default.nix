@@ -1,4 +1,5 @@
-{ myvar, ... }: {
+{ myvar, ... }:
+{
   programs.git = {
     enable = true;
     settings.user.name = myvar.username;
@@ -6,6 +7,9 @@
     lfs = {
       enable = true;
     };
-    # TODO: After setting up GnuPG, enable signoffByDefault of Git
+    signing = {
+      key = myvar.mainGpgAuthorizedKey;
+      signByDefault = true;
+    };
   };
 }
