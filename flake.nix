@@ -27,6 +27,11 @@
     helix.url = "github:helix-editor/helix/master";
 
     # My configuration
+    kitty-config = {
+      url = "github:wold9168/kitty-config";
+      flake = false;
+    };
+
     opencode-config = {
       url = "github:wold9168/opencode-config/master";
       flake = false;
