@@ -83,6 +83,22 @@
         "type": "github"
       }
     },
+    "kitty-config": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1775649083,
+        "narHash": "sha256-vOowbrPDwwKW0/6b/uLUtMiKdAn2LXI08u0NQX24wH4=",
+        "owner": "wold9168",
+        "repo": "kitty-config",
+        "rev": "d4b9470d7b261f8df0602d367b4c89e200158257",
+        "type": "github"
+      },
+      "original": {
+        "owner": "wold9168",
+        "repo": "kitty-config",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1775036866,
@@ -170,15 +186,34 @@
         "type": "github"
       }
     },
+    "opencode-config": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1783399107,
+        "narHash": "sha256-LEFdY8WPYBmysujQv2JRszmkC9VsPhhtN17JDYwImgs=",
+        "owner": "wold9168",
+        "repo": "opencode-config",
+        "rev": "e4451ad81d92481a27d390ea2c710b0d407d870a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "wold9168",
+        "ref": "master",
+        "repo": "opencode-config",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "catppuccin": "catppuccin",
         "helix": "helix",
         "home-manager": "home-manager",
+        "kitty-config": "kitty-config",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-2605": "nixpkgs-2605",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "nixvim": "nixvim"
+        "nixvim": "nixvim",
+        "opencode-config": "opencode-config"
       }
     },
     "rust-overlay": {
