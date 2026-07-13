@@ -36,6 +36,11 @@
       url = "github:wold9168/opencode-config/master";
       flake = false;
     };
+
+    zed-config = {
+      url = "github:wold9168/zed-config/master";
+      flake = false;
+    };
   };
   inputs.self.submodules = true;
   inputs.self.lfs = true;
