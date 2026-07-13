@@ -28,7 +28,7 @@
 
     # My configuration
     kitty-config = {
-      url = "github:wold9168/kitty-config";
+      url = "github:wold9168/kitty-config/master";
       flake = false;
     };
 
