@@ -1,4 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
+let
+  rime-data = pkgs.runCommand "rime-data" {} ''
+    mkdir -p $out/share/rime-data
+    cp -r ${inputs.rime-config}/* $out/share/rime-data/
+  '';
+in 
 {
   # catppuccin.fcitx5.enable = false;
   # xdg.configFile = {
@@ -11,6 +17,14 @@
   #   # "mozc/config1.db".source =
   #   #   config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/home/linux/gui/base/fcitx5/mozc-config1.db";
   # };
+
+  nixpkgs.overlays = [
+    (final: prev: {
+      fcitx5-rime = prev.fcitx5-rime.override {
+        rimeDataPkgs = [ rime-data ];
+      };
+    })
+  ];
 
   i18n.inputMethod = {
     enable = true;

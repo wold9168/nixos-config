@@ -41,6 +41,11 @@
       url = "github:wold9168/zed-config/master";
       flake = false;
     };
+
+    rime-config = {
+      url = "github:wold9168/rime-ice/master";
+      flake = false;
+    };
   };
   inputs.self.submodules = true;
   inputs.self.lfs = true;
