@@ -25,6 +25,14 @@
 
     # 3rd-party software source
     helix.url = "github:helix-editor/helix/master";
+
+    # My configuration
+    opencode-config = {
+      url = "github:wold9168/opencode-config/master";
+      flake = false;
+      submodules = true;
+      lfs = true;
+    };
   };
   outputs =
     {

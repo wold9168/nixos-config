@@ -1,4 +1,9 @@
-{ ... }: {
+{ inputs, ... }:
+{
   programs.opencode.enable = true;
-  # TODO: import config from git@github.com:wold9168/opencode-config.git
+  home.file.".config/nvim" = {
+    source = "${inputs.opencode-config}/";
+    force = true;
+    recursive = true;
+  };
 }
