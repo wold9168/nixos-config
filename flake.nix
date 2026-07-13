@@ -74,7 +74,7 @@
           users.wold9168 = {
             imports = [
               ./home/wold9168
-              inputs.catppuccin.nixosModules.catppuccin
+              inputs.catppuccin.homeModules.catppuccin
             ];
           };
           backupFileExtension = "backup";
