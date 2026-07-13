@@ -1,23 +1,4 @@
 {
-  "nix.serverSettings": {
-    "nixd": {
-      "nixpkgs": {
-        "expr": "import <nixpkgs> { }"
-      },
-      "formatting": {
-        "command": ["nixfmt"]
-      },
-      "options": {
-        "nixos": {
-          "expr": "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.default.options"
-        },
-        "home-manager": {
-          "expr": "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.default.options.home-manager.users.type.getSubOptions []"
-        }
-      },
-      "diagnostic": {
-        "suppress": ["sema-extra-with"]
-      }
-    }
-  }
+  "nix.enableLanguageServer": true, // Enable LSP.
+  "nix.serverPath": "nil" // The path to the LSP server executable.
 }
