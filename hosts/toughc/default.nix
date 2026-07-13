@@ -13,6 +13,7 @@
     ./hardware-configuration.nix
     ../../public/system
     ../../public/DE
+    ./nvidia-proprietary-driver
   ];
 
   boot.loader.systemd-boot.enable = true;
