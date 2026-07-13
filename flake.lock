@@ -95,6 +95,7 @@
       },
       "original": {
         "owner": "wold9168",
+        "ref": "master",
         "repo": "kitty-config",
         "type": "github"
       }
@@ -213,7 +214,8 @@
         "nixpkgs-2605": "nixpkgs-2605",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixvim": "nixvim",
-        "opencode-config": "opencode-config"
+        "opencode-config": "opencode-config",
+        "zed-config": "zed-config"
       }
     },
     "rust-overlay": {
@@ -249,6 +251,23 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "zed-config": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1783103819,
+        "narHash": "sha256-6tW3Rz17iQqxwR+oKroWSMIkICLpzZRDp6Vsd3fe0T8=",
+        "owner": "wold9168",
+        "repo": "zed-config",
+        "rev": "14c141e6905942f16b306445dd0c3fd18b1e473d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "wold9168",
+        "ref": "master",
+        "repo": "zed-config",
         "type": "github"
       }
     }

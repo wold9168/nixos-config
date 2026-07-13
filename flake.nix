@@ -62,10 +62,13 @@
 
       home-manager-module = {
         imports = [ home-manager.nixosModules.home-manager ];
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = specialArgsInstance;
-        home-manager.users.wold9168 = import ./home/wold9168;
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          extraSpecialArgs = specialArgsInstance;
+          users.wold9168 = import ./home/wold9168;
+          backupFileExtension = "backup";
+        };
       };
 
       # Per-host NixOS configurations
