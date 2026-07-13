@@ -10,10 +10,9 @@
 }:
 {
   imports = [
-    ./hardware-configuration.nix
+    ./hardware-configuration
     ../../public/system
     ../../public/DE
-    ./nvidia-proprietary-driver
   ];
 
   boot.loader.systemd-boot.enable = true;
