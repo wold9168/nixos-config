@@ -1,6 +1,17 @@
 {
   description = "NixOS Configuration by wold9168, for Trusted Open Utility & Gear Hub (tough)";
 
+  # TODO: Add CUDA Support for toughc
+  nixConfig = {
+    # substituers will be appended to the default substituters when fetching packages
+    extra-substituters = [
+      "https://cache.nixos-cuda.org"
+    ];
+    extra-trusted-public-keys = [
+      "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
+    ];
+  };
+
   inputs = {
     # Official NixOS source
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
