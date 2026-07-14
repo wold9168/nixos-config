@@ -8,6 +8,12 @@
     syntaxHighlighting.enable = true;
     autosuggestion.enable = true;
     defaultKeymap = "emacs";
+    history = {
+      size = 102400;
+      save = 102400;
+      append = true;
+      extended = true;
+    };
   };
 
   programs.oh-my-posh = {
