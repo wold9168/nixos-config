@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   programs.opencode.enable = true;
-  home.file.".config/nvim" = {
+  xdg.configFile."opencode" = {
     source = "${inputs.opencode-config}/";
     force = true;
     recursive = true;
