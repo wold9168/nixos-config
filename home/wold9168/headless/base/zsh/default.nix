@@ -6,7 +6,7 @@
     enable = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
-    autosuggestions.enable = true;
+    autosuggestion.enable = true;
     defaultKeymap = "emacs";
     history = {
       size = 102400;
