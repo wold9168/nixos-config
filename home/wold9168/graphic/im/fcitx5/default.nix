@@ -1,10 +1,15 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 let
-  rime-data = pkgs.runCommand "rime-data" {} ''
+  rime-data = pkgs.runCommand "rime-data" { } ''
     mkdir -p $out/share/rime-data
     cp -r ${inputs.rime-config}/* $out/share/rime-data/
   '';
-in 
+in
 {
   # catppuccin.fcitx5.enable = false;
   # xdg.configFile = {
@@ -39,5 +44,33 @@ in
       # Korean
       # fcitx5-hangul
     ];
+    fcitx5.settings.inputMethod = {
+      GroupOrder = {
+        "0" = "Default";
+        "1" = "i18n";
+      };
+      "Groups/0" = {
+        Name = "Default";
+        "Default Layout" = "us";
+        DefaultIM = "rime";
+      };
+      "Groups/0/Items/0".Name = "keyboard-us";
+      "Groups/0/Items/0".Layout = "";
+      "Groups/0/Items/1".Name = "rime";
+      "Groups/0/Items/1".Layout = "";
+      "Groups/1" = {
+        Name = "i18n";
+        "Default Layout" = "us";
+        DefaultIM = "anthy";
+      };
+      "Groups/1/Items/0".Name = "keyboard-us";
+      "Groups/1/Items/0".Layout = "";
+      "Groups/1/Items/1".Name = "anthy";
+      "Groups/1/Items/1".Layout = "";
+      "Groups/1/Items/2".Name = "keyboard-ru";
+      "Groups/1/Items/2".Layout = "";
+      "Groups/1/Items/3".Name = "keyboard-fr";
+      "Groups/1/Items/3".Layout = "";
+    };
   };
 }
