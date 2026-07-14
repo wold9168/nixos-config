@@ -1,6 +1,14 @@
 {
+  pkgs,
+  lib,
   ...
 }:
+let
+  enablePowerlevel10k = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+  zshInit = lib.mkMerge [
+    enablePowerlevel10k
+  ];
+in
 {
   programs.zsh = {
     enable = true;
@@ -22,5 +30,9 @@
       ];
       theme = "robbyrussell";
     };
+    initContent = zshInit;
   };
+  home.packages = with pkgs; [
+    zsh-powerlevel10k
+  ];
 }
