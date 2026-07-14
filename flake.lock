@@ -21,6 +21,23 @@
         "type": "github"
       }
     },
+    "dotfile": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1783103741,
+        "narHash": "sha256-qudY5DoJy1HaziKD5LjEcKvKD/KTix7FOtOR5+VX26g=",
+        "owner": "wold9168",
+        "repo": "dotfile",
+        "rev": "fc9c2d6452b1e98fe60d33dbc6171fae8fac55b7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "wold9168",
+        "ref": "master",
+        "repo": "dotfile",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -224,6 +241,7 @@
     "root": {
       "inputs": {
         "catppuccin": "catppuccin",
+        "dotfile": "dotfile",
         "helix": "helix",
         "home-manager": "home-manager",
         "kitty-config": "kitty-config",
