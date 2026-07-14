@@ -8,4 +8,5 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+  networking.nameservers = ["192.168.10.2"];
 }
