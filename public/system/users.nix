@@ -2,7 +2,7 @@
   users.users."${myvar.username}" = {
     isNormalUser = true;
     description = myvar.userfullname;
-    shell = lib.mkDefault "/bin/bash";
+    shell = lib.mkDefault pkgs.bash;
     createHome = true;
     extraGroups = [
       "networkmanager"
