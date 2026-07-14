@@ -47,7 +47,7 @@ in
   home.packages = with pkgs; [
     zsh-powerlevel10k
   ];
-  home.file."${config.xdg.configHome}/.p10k.zsh" = {
+  home.file."${config.home.homeDirectory}/.p10k.zsh" = {
     source = "${inputs.dotfile}/.p10k.zsh";
     force = true;
   };
