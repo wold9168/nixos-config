@@ -11,7 +11,7 @@ let
   '';
 in
 {
-  # catppuccin.fcitx5.enable = false;
+  catppuccin.fcitx5.enable = false;
   # xdg.configFile = {
   #   "fcitx5/profile" = {
   #     source = ./profile;
