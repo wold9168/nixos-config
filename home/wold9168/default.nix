@@ -1,11 +1,14 @@
 {
   pkgs,
+  lib,
   myvar,
   mylib,
+  isGraphicHost ? true,
   ...
 }:
 {
-  imports = [ ./base ] ++ mylib.scanPaths ./.;
+  imports = [ ./headless ]
+    ++ lib.optionals isGraphicHost (mylib.scanPaths ./graphic);
   
   home.username = myvar.username;
   home.homeDirectory = "/home/wold9168";

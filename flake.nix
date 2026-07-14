@@ -65,21 +65,25 @@
 
       developHostSystem = "x86_64-linux";
 
-      home-manager-module = {
-        imports = [ home-manager.nixosModules.home-manager ];
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          extraSpecialArgs = specialArgsInstance;
-          users.wold9168 = {
-            imports = [
-              ./home/wold9168
-              inputs.catppuccin.homeModules.catppuccin
-            ];
+      home-manager-module =
+        { isGraphicHost }:
+        {
+          imports = [ home-manager.nixosModules.home-manager ];
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            extraSpecialArgs = specialArgsInstance // {
+              inherit isGraphicHost;
+            };
+            users.wold9168 = {
+              imports = [
+                ./home/wold9168
+                inputs.catppuccin.homeModules.catppuccin
+              ];
+            };
+            backupFileExtension = "backup";
           };
-          backupFileExtension = "backup";
         };
-      };
 
       # Per-host NixOS configurations
       nixosConfigurationsInstance = rec {
@@ -88,7 +92,7 @@
           specialArgs = specialArgsInstance;
           modules = [
             ./hosts/toughc
-            home-manager-module
+            (home-manager-module { isGraphicHost = true; })
             inputs.catppuccin.nixosModules.catppuccin
           ];
         };
@@ -96,7 +100,7 @@
           specialArgs = specialArgsInstance;
           modules = [
             ./hosts/toughqemu
-            home-manager-module
+            (home-manager-module { isGraphicHost = true; })
             inputs.catppuccin.nixosModules.catppuccin
           ];
         };
@@ -104,7 +108,7 @@
           specialArgs = specialArgsInstance;
           modules = [
             ./hosts/toughrpi
-            home-manager-module # need test
+            (home-manager-module { isGraphicHost = false; }) # need test
             inputs.catppuccin.nixosModules.catppuccin
           ];
         };
