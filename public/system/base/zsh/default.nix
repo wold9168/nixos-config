@@ -2,6 +2,7 @@
   # pkgs,
   myvar,
   lib,
+  pkgs,
   ...
 }:
 {

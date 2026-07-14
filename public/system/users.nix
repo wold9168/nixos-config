@@ -1,4 +1,4 @@
-{ lib, myvar, ... }: {
+{ lib, pkgs, myvar, ... }: {
   users.users."${myvar.username}" = {
     isNormalUser = true;
     description = myvar.userfullname;
