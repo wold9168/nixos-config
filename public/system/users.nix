@@ -6,6 +6,8 @@
     createHome = true;
     extraGroups = [
       "networkmanager"
+      "video"
+      "render"
       "wheel"
     ];
     openssh.authorizedKeys.keys = myvar.mainSshAuthorizedKeys;
