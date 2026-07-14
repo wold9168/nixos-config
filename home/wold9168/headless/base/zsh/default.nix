@@ -7,7 +7,7 @@
 }:
 let
   softSource =
-    { path }:
+    path:
     lib.optionals (lib.pathExists "${config.home.homeDirectory}/${path}") [
       "source ${config.home.homeDirectory}/${path}"
     ];
