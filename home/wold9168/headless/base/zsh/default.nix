@@ -1,13 +1,22 @@
 {
+  inputs,
   pkgs,
   lib,
+  config,
   ...
 }:
 let
+  softSource =
+    { path }:
+    lib.optionals (lib.pathExists "${config.home.homeDirectory}/${path}") [
+      "source ${config.home.homeDirectory}/${path}"
+    ];
   enablePowerlevel10k = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-  zshInit = lib.mkMerge [
-    enablePowerlevel10k
-  ];
+  zshInit =
+    lib.mkMerge [
+      enablePowerlevel10k
+    ]
+    ++ softSource ".p10k.zsh";
 in
 {
   programs.zsh = {
@@ -35,4 +44,8 @@ in
   home.packages = with pkgs; [
     zsh-powerlevel10k
   ];
+  home.file."${config.xdg.configHome}/.p10k.zsh" = {
+    source = "${inputs.kitty-config}/.p10k.zsh";
+    force = true;
+  };
 }

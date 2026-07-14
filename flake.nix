@@ -57,6 +57,11 @@
       url = "github:wold9168/rime-ice/main";
       flake = false;
     };
+
+    dotfile = {
+      url = "github:wold9168/dotfile/master";
+      flake = false;
+    };
   };
   inputs.self.submodules = true;
   inputs.self.lfs = true;
