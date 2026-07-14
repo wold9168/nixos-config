@@ -3,6 +3,11 @@
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
-    # Do not set Pinentry. Pinentry should be managed by rc of current shell.
+    # TODO: Pinentry should be managed by rc of current shell.
+    pinentryPackage = pkgs.pinentry-qt;
   };
+  environment.systemPackages = with pkgs; [
+    pinentry-curses
+    pinentry-qt
+  ];
 }

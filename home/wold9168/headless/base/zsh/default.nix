@@ -6,6 +6,7 @@
     enable = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
+    defaultKeymap = "emacs";
   };
 
   programs.oh-my-posh = {
