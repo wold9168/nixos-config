@@ -13,7 +13,7 @@ let
     ];
   enablePowerlevel10k = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
   zshInit =
-    lib.mkMerge [
+    lib.concatStringsSep "\n" [
       enablePowerlevel10k
     ]
     ++ softSource ".p10k.zsh";
