@@ -48,7 +48,7 @@ in
     zsh-powerlevel10k
   ];
   home.file."${config.xdg.configHome}/.p10k.zsh" = {
-    source = "${inputs.kitty-config}/.p10k.zsh";
+    source = "${inputs.dotfile}/.p10k.zsh";
     force = true;
   };
 }
