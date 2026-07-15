@@ -128,7 +128,7 @@
           modules = [
             overlayModule
             ./hosts/toughrpi
-            (home-manager-module { isGraphicHost = false; }) # need test
+            (home-manager-module { isGraphicHost = false; })
             inputs.catppuccin.nixosModules.catppuccin
           ];
         };
