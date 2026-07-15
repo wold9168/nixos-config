@@ -1,15 +1,8 @@
 {
   config,
   pkgs,
-  inputs,
   ...
 }:
-let
-  rime-data = pkgs.runCommand "rime-data" { } ''
-    mkdir -p $out/share/rime-data
-    cp -r ${inputs.rime-config}/* $out/share/rime-data/
-  '';
-in
 {
   catppuccin.fcitx5.enable = false;
   # xdg.configFile = {
@@ -32,7 +25,7 @@ in
       fcitx5-gtk # gtk im module
 
       # Chinese
-      (fcitx5-rime.override { rimeDataPkgs = [ rime-data ]; }) # for flypy chinese input method
+      (fcitx5-rime.override { rimeDataPkgs = [ pkgs.rime-data ]; }) # for flypy chinese input method
       # fcitx5-chinese-addons # we use rime instead
 
       # Japanese

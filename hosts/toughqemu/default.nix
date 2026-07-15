@@ -13,6 +13,7 @@
     ./hardware-configuration.nix
     ../../public/system
     ../../public/DE
+    ../../public/overlays-registry.nix
   ];
 
   boot.loader.systemd-boot.enable = true;

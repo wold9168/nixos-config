@@ -77,7 +77,7 @@
       inherit (inputs.nixpkgs) lib;
       mylib = import ./lib { inherit lib; };
       myvar = import ./var { inherit lib; };
-      specialArgsInstance = { inherit inputs mylib myvar; };
+      specialArgsInstance = { inherit inputs self mylib myvar; };
 
       developHostSystem = "x86_64-linux";
 
@@ -131,11 +131,20 @@
       };
       devShellsInstance = import ./devshell.nix { inherit developHostSystem nixpkgs; };
       devReplEnv = import ./devrepl.nix { inherit developHostSystem nixpkgs; };
+      packagesInstance = let
+        pkgsFor = system: import nixpkgs { inherit system; };
+        base = lib.genAttrs [ "x86_64-linux" "aarch64-linux" ] (system: {
+          rime-data = (pkgsFor system).callPackage
+            ./pkgs/rime-data/package.nix { inherit inputs; };
+        });
+      in base // {
+        "${developHostSystem}" = base."${developHostSystem}" // { devRepl = devReplEnv; };
+      };
     in
     {
       inherit inputs;
       nixosConfigurations = nixosConfigurationsInstance;
       devShells = devShellsInstance;
-      packages."${developHostSystem}"."devRepl" = devReplEnv;
+      packages = packagesInstance;
     };
 }
