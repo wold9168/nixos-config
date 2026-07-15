@@ -14,7 +14,6 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../public/system
-    ../../public/overlays-registry.nix
   ];
 
   # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)

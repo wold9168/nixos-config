@@ -81,6 +81,7 @@
 
       developHostSystem = "x86_64-linux";
 
+      overlayModule = { nixpkgs.overlays = overlayList; };
       home-manager-module =
         { isGraphicHost }:
         {
@@ -107,6 +108,7 @@
         toughc = lib.nixosSystem {
           specialArgs = specialArgsInstance;
           modules = [
+            overlayModule
             ./hosts/toughc
             (home-manager-module { isGraphicHost = true; })
             inputs.catppuccin.nixosModules.catppuccin
@@ -115,6 +117,7 @@
         toughqemu = lib.nixosSystem {
           specialArgs = specialArgsInstance;
           modules = [
+            overlayModule
             ./hosts/toughqemu
             (home-manager-module { isGraphicHost = true; })
             inputs.catppuccin.nixosModules.catppuccin
@@ -123,6 +126,7 @@
         toughrpi = lib.nixosSystem {
           specialArgs = specialArgsInstance;
           modules = [
+            overlayModule
             ./hosts/toughrpi
             (home-manager-module { isGraphicHost = false; }) # need test
             inputs.catppuccin.nixosModules.catppuccin
@@ -131,6 +135,7 @@
       };
       devShellsInstance = import ./devshell.nix { inherit developHostSystem nixpkgs; };
       devReplEnv = import ./devrepl.nix { inherit developHostSystem nixpkgs; };
+      overlayList = import ./overlays { inherit inputs self; };
       packagesInstance = let
         pkgsFor = system: import nixpkgs { inherit system; };
         base = lib.genAttrs [ "x86_64-linux" "aarch64-linux" ] (system: {
@@ -146,5 +151,6 @@
       nixosConfigurations = nixosConfigurationsInstance;
       devShells = devShellsInstance;
       packages = packagesInstance;
+      overlays.default = lib.composeManyExtensions overlayList;
     };
 }
