@@ -6,5 +6,6 @@
     gawk
     jekyll
     glow
+    tmux
   ];
 }
