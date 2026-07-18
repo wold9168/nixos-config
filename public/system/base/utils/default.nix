@@ -7,5 +7,6 @@
     jekyll
     glow
     tmux
+    just
   ];
 }
