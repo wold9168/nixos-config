@@ -13,6 +13,7 @@
     ./hardware-configuration
     ../../public/system
     ../../public/DE
+    ./virtualisation
   ];
 
   boot.loader.systemd-boot.enable = true;
