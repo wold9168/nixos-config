@@ -6,8 +6,8 @@
 }:
 {
   home.packages = with pkgs; [ usql ];
-  home.file."${config.xdg.configHome}/.usqlrc" = {
-    source = "${inputs.kitty-config}/.usqlrc";
+  home.file."${config.home.homeDirectory}/.usqlrc" = {
+    source = "${inputs.dotfile}/.usqlrc";
     force = true;
   };
 }
