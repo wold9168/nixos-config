@@ -224,11 +224,11 @@
     "rime-config": {
       "flake": false,
       "locked": {
-        "lastModified": 1781106837,
-        "narHash": "sha256-6adMN1t0O2fEN4Yw7ysherB1Ffappx7yCsQCtvgvgAw=",
+        "lastModified": 1785682438,
+        "narHash": "sha256-D0oSmv3CocQSNsERBpZDrdACXjGq0P2dUf14zh0N8O8=",
         "owner": "wold9168",
         "repo": "rime-ice",
-        "rev": "1cbac74baff63f7980bd9476f05121917d760adb",
+        "rev": "1eac13c143dfd399e333fd5a611084f500c0fd97",
         "type": "github"
       },
       "original": {
