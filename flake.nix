@@ -54,7 +54,7 @@
     };
 
     rime-config = {
-      url = "github:wold9168/rime-ice/main";
+      url = "github:wold9168/rime-ice/my-use-case";
       flake = false;
     };
 
