@@ -13,7 +13,7 @@ let
       "source ${config.home.homeDirectory}/${path}"
     ];
   enablePowerlevel10k = "source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-  enableDotP10k = "source .p10k.zsh";
+  enableDotP10k = "source ${config.home.homeDirectory}/.p10k.zsh";
   zshInit = lib.concatStringsSep "\n" (
     [
       enablePowerlevel10k
