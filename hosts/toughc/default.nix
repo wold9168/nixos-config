@@ -6,15 +6,11 @@
   config,
   pkgs,
   inputs,
+  mylib,
   ...
 }:
 {
-  imports = [
-    ./hardware-configuration
-    ../../public/system
-    ../../public/DE
-    ./virtualisation
-  ];
+  imports = mylib.scanPaths ./.;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
