@@ -5,7 +5,7 @@
 
     font = {
       name = "BlexMono Nerd Font";
-      size = 20.0;
+      size = 16.0;
     };
 
     themeFile = "Catppuccin-Latte";
