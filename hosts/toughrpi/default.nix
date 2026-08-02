@@ -10,12 +10,7 @@
 }:
 
 {
-  imports = [
-    # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-    ../../public/system
-    ./virtualisation
-  ];
+  imports = mylib.scanPaths ./. ++ [../../public/system];
 
   # Use the extlinux boot loader. (NixOS wants to enable GRUB by default)
   boot.loader.grub.enable = false;
