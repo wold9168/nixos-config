@@ -8,5 +8,6 @@
     glow
     tmux
     just
+    ncdu
   ];
 }
